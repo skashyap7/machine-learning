@@ -19,9 +19,22 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
-hypothesis = sigmoid(theta*X)
-J = sum(log(hypothesis)*-y' - (log(1-hypothesis)*(1-y)))/m;
-grad = sum((sigmoid(X)-y)*theta)/m;
+
+%
+%  
+
+hypothesis = sigmoid( X*theta);
+%fprintf(" Hypothesis is %f",hypothesis);
+a = (-y')*log(hypothesis);
+%fprintf(" A is %f",a);
+b = (1-y)'*log(1-hypothesis);
+%fprintf(" B is %f",b);
+J =  (a - b)/m;
+fprintf(" Cost = %f", J);
+%fprintf("Cost is %f", J);
+grad = (X'*(hypothesis-y))/m ;
+%fprintf("Gradient = %f",grad);
+
 
 
 

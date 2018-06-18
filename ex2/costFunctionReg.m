@@ -24,4 +24,23 @@ grad = zeros(size(theta));
 
 % =============================================================
 
+
+
+
+
+hypothesis = sigmoid(X*theta);
+%fprintf(" Hypothesis is %f",hypothesis);
+a = (-y')*log(hypothesis);
+%fprintf(" A is %f",a);
+b = (1-y)'*log(1-hypothesis);
+%fprintf(" B is %f",b);
+newtheta = [0 ; theta(2:size(theta))];
+J =  (a - b)/m + (lambda*(sum(newtheta.^2))/(2*m));
+
+%fprintf(" Cost = %f", J);
+%fprintf(" Cost is %f", J);
+
+reg_grad = lambda*newtheta/m;
+grad = (X'*(hypothesis-y))/m  + (lambda/m).*newtheta;
+
 end

@@ -22,6 +22,7 @@ p = zeros(m, 1);
 
 
 % =========================================================================
-
+p = @arrayfun(@(x) x>=0.5,sigmoid(X*theta) );
+%fprintf("Prediction is %f", p );
 
 end
